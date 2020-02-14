@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    
+
+    
+
+    <title>DealerSubscriberWidget Class Methods</title>
+    <meta name="Title" content="DealerSubscriberWidget Class Methods"/>    
+    
+
+    <script src="template/packages/jquery/script/chm.mshc/jquery-1.7.2.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-dotnet/css/chm.mshc/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-dotnet/css/dx.net.css"  data-mshv2-stylesheet="/template/packages/core-dotnet/dx.net.mshv2.css" data-mshv1-stylesheet="/template/packages/core-dotnet/dx.net.mshv1.css" data-responsive-mobile="template/packages/core-dotnet/dx.net.mobile.css" data-responsive-tablet="template/packages/core-dotnet/dx.net.tablet.css"></link>
+    <script src="template/packages/plugins-dotnet/script/chm.mshc/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-dotnet/script/dx.net.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget_methods"/>
+    <meta name="Description" content="Subscriber implementation based on DEALER socket. Has to be used with RouterPublisherWidget widget on the other end (as publisher)." />
+    <meta name="Microsoft.Help.TocParent" content="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget"/>
+    <meta name="Microsoft.Help.ContentType" content="Reference" /><meta name="Microsoft.Help.TocOrder" content="30"/>
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/customstyles.css"></link>
+    
+
+    
+
+    
+
+    <!-- Google Analytics -->
+<script>
+if (location.protocol == "http:" || location.protocol == "https:") {
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78446365-3', 'auto');
+ga('send', 'pageview');
+}
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        
+            <div class="i-project-title">FD.ZeroMQ Library</div>
+        <div class="i-page-title"><div class="i-page-title-text">DealerSubscriberWidget Class Methods</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span><span id="" class="i-popup-link" data-popup-contentsource="#i-member-filter-checkboxes" data-popup-title='Members Options'>
+                        <label class="i-members-all">
+                            Members Options: Show All
+                        </label>
+                        <label class="i-members-filtered" style="display: none;">
+                            Members Options: Filtered
+                        </label>
+                    </span>
+                    <div class="i-popup-content" id="i-member-filter-checkboxes">
+                        <input id="i-inherited-checkbox" type="checkbox" class="i-toggle-filter-checkbox" checked="true" data-toggleclass="i-inherited-member">
+                        <label class="i-members-filter" for="i-inherited-checkbox">
+                            Include Inherited Members
+                        </label>
+                        <br />
+                        <input id="i-protected-checkbox" type="checkbox" class="i-toggle-filter-checkbox" checked="true" data-toggleclass="ProtectedMember" />
+                        <label class="i-members-filter" for="i-protected-checkbox">Include Protected Members</label><br />
+                    </div>
+        
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+<a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ_namespace.html">FD.ZeroMQ.NetMQ Namespace</a>
+ : DealerSubscriberWidget Class</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>For a list of all members of this type, see <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget_members.html">DealerSubscriberWidget members</a>.</p>
+
+            <a name="MethodsBookmark"></a>
+            <div class="i-section-heading" id="i-publicMethods-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">Public Methods</span></div><div id="i-publicMethods-section-content" class="i-section-content"><table class="i-filtered-item-list"><tr><th>&nbsp;</th><th>Name</th><th>Description</th></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~Bind.html">Bind</A></td><td class="i-member-description">Overloaded.&nbsp;Binds the instance to <STRONG>endPoint</STRONG>. (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~BindRandomPort.html">BindRandomPort</A></td><td class="i-member-description">Overloaded.&nbsp;Binds the instance to specified <STRONG>ipAddress</STRONG>, with randomly selected port. (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~Connect.html">Connect</A></td><td class="i-member-description">Overloaded.&nbsp;Connects the instance to <STRONG>endPoint</STRONG>. (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~Disconnect.html">Disconnect</A></td><td class="i-member-description">Disconnects the instance from the specified <A id=endPointParameterLink class=i-popup-link data-popup-showevent="click mouseenter" data-popup-contentsource="#endPointPopupContent">endPoint</A>. (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.RequestorEngine`1~Dispose.html">Dispose</A></td><td class="i-member-description">
+            Disposing the socket.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.RequestorEngine`1.html">FD.ZeroMQ.NetMQ.RequestorEngine&lt;DealerSocket&gt;</a></strong>)</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~GetMySubscriptions.html">GetMySubscriptions</A></td><td class="i-member-description">
+            Returns enumeration of all the terms this widget is subscribed for.
+            The enumeration is gotten from the publisher, so this method can be used
+            for checking actual list of subscriptions as seen by the publisher.
+             &nbsp;</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~GetMySubscriptionsAsStrings.html">GetMySubscriptionsAsStrings</A></td><td class="i-member-description">This method internally uses <A href="FD.ZeroMQ~FD.ZeroMQ.IDealerSubscriber~GetMySubscriptions.html">GetMySubscriptions</A>, and converts returned values to strings by using <A id=encodingParameterLink class=i-popup-link data-popup-showevent="click mouseenter" data-popup-contentsource="#encodingPopupContent">encoding</A>. &nbsp;</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~RemoveAllSubscriptions.html">RemoveAllSubscriptions</A></td><td class="i-member-description">Cancel all existing subscriptions. For difference between <A href="FD.ZeroMQ~FD.ZeroMQ.IDealerSubscriber~UnsubscribeAll.html">UnsubscribeAll</A> and this method see "Remarks" section in <A href="FD.ZeroMQ~FD.ZeroMQ.IDealerSubscriber~UnsubscribeAll.html">UnsubscribeAll</A>. &nbsp;</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~Subscribe.html">Subscribe</A></td><td class="i-member-description">Overloaded.&nbsp;Subscribes for messages related to <STRONG>term</STRONG>. &nbsp;</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~SubscribeAll.html">SubscribeAll</A></td><td class="i-member-description">
+            Subscribes for all terms.
+             &nbsp;</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~Unbind.html">Unbind</A></td><td class="i-member-description">Unbinds the instance from the specified <A id=endPointParameterLink class=i-popup-link data-popup-showevent="click mouseenter" data-popup-contentsource="#endPointPopupContent">endPoint</A>. (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~Unsubscribe.html">Unsubscribe</A></td><td class="i-member-description">Overloaded.&nbsp;Unsubscribes for messages related to <STRONG>term</STRONG>. &nbsp;</td></tr>
+<tr><td class="i-image"><img alt="Public Method" src="template/packages/core-dotnet/images/publicMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~UnsubscribeAll.html">UnsubscribeAll</A></td><td class="i-member-description">
+            Removes subscription for all messages.
+             &nbsp;</td></tr>
+</table><a href="#top">Top</a></div>
+            <div class="i-section-heading" id="i-protectedMethods-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">Protected Methods</span></div><div id="i-protectedMethods-section-content" class="i-section-content"><table class="i-filtered-item-list"><tr><th>&nbsp;</th><th>Name</th><th>Description</th></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~AfterLoop.html">AfterLoop</A></td><td class="i-member-description">
+            Used internally. Called after the instance is started for the first time.
+             (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase~BeforeLoop.html">BeforeLoop</A></td><td class="i-member-description">
+            Used internally. Called after the instance is started for the first time.
+             (Inherited from <a href="FD.ZeroMQ~FD.ZeroMQ.WidgetCommonBase.html">FD.ZeroMQ.WidgetCommonBase</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1~BeforeLoopFirst.html">BeforeLoopFirst</A></td><td class="i-member-description">
+            Used internally. Called after the instance is started for the first time.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1.html">FD.ZeroMQ.NetMQ.FreeSendReceiveEngine&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.RequestorEngine`1~GetResponse.html">GetResponse</A></td><td class="i-member-description">
+            Method that accepts request and returns response.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.RequestorEngine`1.html">FD.ZeroMQ.NetMQ.RequestorEngine&lt;DealerSocket&gt;</a></strong>)</td></tr>
+<tr><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~InvalidFormatMessage.html">InvalidFormatMessage</A></td><td class="i-member-description">Overridden.&nbsp;
+            Method that is called when a received message is not formatted
+            as expected.
+             &nbsp;</td></tr>
+<tr><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget~Iteration.html">Iteration</A></td><td class="i-member-description">Overridden.&nbsp;
+            Used internally. Called within the main loop, in every pass.
+             &nbsp;</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.RequestorEngine`1~OnMessageReceived.html">OnMessageReceived</A></td><td class="i-member-description">
+            Method that is called when a new message is received.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.RequestorEngine`1.html">FD.ZeroMQ.NetMQ.RequestorEngine&lt;DealerSocket&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1~Pack.html">Pack</A></td><td class="i-member-description">Prepares <A id=framesParameterLink class=i-popup-link data-popup-showevent="click mouseenter" data-popup-contentsource="#framesPopupContent">frames</A> for sending. (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1.html">FD.ZeroMQ.NetMQ.FreeSendReceiveEngine&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1~SocketBind.html">SocketBind</A></td><td class="i-member-description">
+            Should implement actual binding. The binding has to be performed from
+            the same thread that called this method.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1.html">FD.ZeroMQ.NetMQ.WidgetBase&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1~SocketBindRandomPort.html">SocketBindRandomPort</A></td><td class="i-member-description">
+            Should implement actual binding. The binding has to be performed from
+            the same thread that called this method.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1.html">FD.ZeroMQ.NetMQ.WidgetBase&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1~SocketConnect.html">SocketConnect</A></td><td class="i-member-description">
+            Should implement actual connecting. The connecting has to be performed from
+            the same thread that called this method.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1.html">FD.ZeroMQ.NetMQ.WidgetBase&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1~SocketDisconnect.html">SocketDisconnect</A></td><td class="i-member-description">
+            Should implement actual disconnecting. The disconnecting has to be performed from
+            the same thread that called this method.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1.html">FD.ZeroMQ.NetMQ.WidgetBase&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1~SocketUnbind.html">SocketUnbind</A></td><td class="i-member-description">
+            Should implement actual unbinding. The unbinding has to be performed from
+            the same thread that called this method.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.WidgetBase`1.html">FD.ZeroMQ.NetMQ.WidgetBase&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1~ToSend.html">ToSend</A></td><td class="i-member-description">
+            Sends the message.
+             (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1.html">FD.ZeroMQ.NetMQ.FreeSendReceiveEngine&lt;T&gt;</a></strong>)</td></tr>
+<tr class="i-inherited-member"><td class="i-image"><img alt="Protected Method" src="template/packages/core-dotnet/images/protectedMethod.png"></td><td class='i-member-link'><A HREF="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1~Unpack.html">Unpack</A></td><td class="i-member-description">Prepares <A id=messageParameterLink class=i-popup-link data-popup-showevent="click mouseenter" data-popup-contentsource="#messagePopupContent">message</A> received for returning it to the caller. (Inherited from <a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.FreeSendReceiveEngine`1.html">FD.ZeroMQ.NetMQ.FreeSendReceiveEngine&lt;T&gt;</a></strong>)</td></tr>
+</table><a href="#top">Top</a></div>
+            
+
+            
+
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><h4 class="i-sub-heading">Reference</h4><p><a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget.html">DealerSubscriberWidget Class</a>
+<br/><a href="FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ_namespace.html">FD.ZeroMQ.NetMQ Namespace</a>
+</p>
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+
+<a href="mailto:support@company.com?subject=Documentation Feedback: FD.ZeroMQ.NetMQ~FD.ZeroMQ.NetMQ.DealerSubscriberWidget.html">Send Feedback</a>
+    </div>
+    
+
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>
