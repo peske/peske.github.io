@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    
+
+    
+
+    <title>Configuration</title>
+    <meta name="Title" content="Configuration"/>    
+    
+
+    <script src="template/packages/jquery/script/chm.mshc/jquery-1.7.2.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="In this section (page) I'll cover some general concepts when it comes to configuring FD.Serialization library. Later, while describing particular features offered by the library I'll go into more details how these features should be configured." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/chm.mshc/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/chm.mshc/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="c0f3b546-8fb7-490b-b99e-24b7622aee31"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/customstyles.css"></link>
+    
+
+    
+
+    
+
+    <!-- Google Analytics -->
+<script>
+if (location.protocol == "http:" || location.protocol == "https:") {
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78446365-3', 'auto');
+ga('send', 'pageview');
+}
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        
+            <div class="i-project-title"></div>
+        <div class="i-page-title"><div class="i-page-title-text">Configuration</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <P>In this section (page) I'll cover some general concepts when it comes to configuring FD.Serialization library. Later, while describing particular features offered by the library I'll go into more details how these features should be configured.</P>
+<P>Let's start with different configuration methods available:</P>
+<UL>
+<LI>Configuration in JSON configuration file; 
+<LI>Configuration in code, by using <A href="FD.Serialization~FD.Serialization.Config.ConfigValues.html" data-auto-update-caption="true">ConfigValues Class</A>; 
+<LI>Combination of the previous two; 
+<LI>Attribute configuration; 
+<LI>Call-level configuration. </LI></UL>
+<P>Each of these configuration methods will be explained in the rest of this section (page).</P>
+<H2>JSON Configuration File</H2>
+<P>Here I'll simply provide JSON configuration file example. Again, details about different sections from the file will be explained while introducing corresponding feature.</P>
+<DIV class=i-filtered-content-JSON data-title="JSON" data-itemid="JSON">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Sample Configuration File</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE>{
+    <SPAN style="COLOR: #800000">"fd_serialization"</SPAN>: {
+        <SPAN style="COLOR: #800000">"disableAdvanced"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>, 
+        <SPAN style="COLOR: #800000">"useSigningByte"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+        <SPAN style="COLOR: #800000">"signingByteCheckingLevel"</SPAN>: <SPAN style="COLOR: #800000">"0"</SPAN>,
+        <SPAN style="COLOR: #800000">"typeIdLength"</SPAN>: <SPAN style="COLOR: #800000">"Guid"</SPAN>,
+        <SPAN style="COLOR: #800000">"serialization"</SPAN>: {
+            <SPAN style="COLOR: #800000">"disableAdvanced"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+            <SPAN style="COLOR: #800000">"serializerAssemblies"</SPAN>: [
+                <SPAN style="COLOR: #800000">"FD.Serialization.BinaryFormatter"</SPAN>,
+                <SPAN style="COLOR: #800000">"FD.Serialization.Protobuf"</SPAN>
+            ],
+            <SPAN style="COLOR: #800000">"messageAssemblies"</SPAN>: [
+                <SPAN style="COLOR: #800000">"FD.Serialization.TestData"</SPAN>,
+                <SPAN style="COLOR: #800000">"FD.Serialization.BinaryFormatter.TestData"</SPAN>,
+                <SPAN style="COLOR: #800000">"FD.Serialization.Protobuf.TestData"</SPAN>
+            ],
+            <SPAN style="COLOR: #800000">"serializers"</SPAN>: [
+                {
+                    <SPAN style="COLOR: #800000">"serializerId"</SPAN>: <SPAN style="COLOR: #800000">"1"</SPAN>
+                }
+            ],
+            <SPAN style="COLOR: #800000">"options"</SPAN>: [
+                {
+                    <SPAN style="COLOR: #800000">"includeSerializerId"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+                    <SPAN style="COLOR: #800000">"includeDelimiters"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+                    <SPAN style="COLOR: #800000">"includeTypeId"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>
+                }
+            ]
+        },
+        <SPAN style="COLOR: #800000">"compression"</SPAN>: {
+            <SPAN style="COLOR: #800000">"disable"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+            <SPAN style="COLOR: #800000">"options"</SPAN>: [
+                {
+                    <SPAN style="COLOR: #800000">"useCompression"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+                    <SPAN style="COLOR: #800000">"compressorType"</SPAN>: <SPAN style="COLOR: #800000">"FD.Serialization.Compression.GZipStreamCompressor, FD.Serialization"</SPAN>,
+                    <SPAN style="COLOR: #800000">"compressorOptionName"</SPAN>: <SPAN style="COLOR: #800000">"Optimal"</SPAN>
+                }
+            ],
+            <SPAN style="COLOR: #800000">"compressorTypes"</SPAN>: [
+                <SPAN style="COLOR: #800000">"FD.Serialization.Compression.DeflateStreamCompressor, FD.Serialization"</SPAN>,
+                <SPAN style="COLOR: #800000">"FD.Serialization.Compression.GZipStreamCompressor, FD.Serialization"</SPAN>
+            ]
+        }
+    }
+}</PRE></TD></TR></TBODY></TABLE></DIV> 
+<P>Here I want bring your attention to few things about this file:</P>
+<UL>
+<LI>All FD.Serialization library configuration options are contained within <SPAN class="InlineCode dxMisspelled">fd_serialization</SPAN> element. It means that you can place everything in a separate configuration file, or you can simply add <SPAN class="InlineCode dxMisspelled">fd_serialization</SPAN> to your existing configuration file - there's no difference. FD.Serialization library will seek for <SPAN class="InlineCode dxMisspelled">fd_serialization</SPAN> element and use its content. 
+<LI>Roughly speaking, configuration content can be divided into three groups: 
+<UL>
+<LI>Root level configuration options, i.e. <SPAN class=InlineCode>fd_serialization:disableAdvanced</SPAN>, <SPAN class=InlineCode>fd_serialization:useSigningByte</SPAN>, <SPAN class=InlineCode>fd_serialization:signingByteCheckingLevel</SPAN> and <SPAN class=InlineCode>fd_serialization:typeIdLength</SPAN>; 
+<LI>Serialization-related configuration options, contained within <SPAN class=InlineCode>fd_serialization:serialization</SPAN> sub-element; 
+<LI>Compression-related configuration options, contained within <SPAN class=InlineCode>fd_serialization:compression</SPAN> sub-element. </LI></UL></LI></UL>
+<H3>Root-Level Configuration Options</H3>
+<P>Configuration sections fd_serialization:serialization and fd_serialization:compression are explained in other sections of this manual (<A href="ImplementationAgnostic.html" data-auto-update-caption="true">Implementation Agnostic</A> and <A href="Compression.html" data-auto-update-caption="true">Compression</A> respectively). Here I'll cover only few root-level options:</P>
+<UL>
+<LI><SPAN class=InlineCode>fd_serialization:useSigningByte</SPAN> - whether to use signing byte (metadata) or not. Note that if this option is set to <SPAN class=InlineCode>false</SPAN> metadata won't be prepended to serialized data, so all features which require metadata won't work. You'll probably always set this value to <SPAN class=InlineCode>true</SPAN>. 
+<LI><SPAN class=InlineCode>fd_serialization:signingByteCheckingLevel</SPAN> - number of checking bytes (explained in <A href="MessageStructure.html" data-auto-update-caption="true">Message Structure</A> section). 
+<LI><SPAN class=InlineCode>fd_serialization:typeIdLength</SPAN> - type ID length (explained in <A href="MessageStructure.html" data-auto-update-caption="true">Message Structure</A> section). </LI></UL>
+<H3>Usage</H3>
+<P>Once we have the configuration file in place, we can use it in the following way:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Configuration from File</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// Creating SerializationCentral instance based on the configuration:
+</SPAN>SerializationCentral central = <SPAN style="COLOR: #0000ff">new</SPAN> SerializationCentral(<SPAN style="COLOR: #800000">"config_file_path.json"</SPAN>);
+
+<SPAN style="COLOR: #008000">// ...
+// Now we can use SerializationCentral for all (de)serializations
+// ...</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<H2>Configuring in Code</H2>
+<P>Everything that can be configured in the configuration file can also be configured from code, and vice versa. It is already mentioned that for configuring in code we can use <A href="FD.Serialization~FD.Serialization.Config.ConfigValues.html" data-auto-update-caption="true">ConfigValues Class</A>. Here I'll show simple (incomplete!) example:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Configuring in Code</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// Creating ConfigValues instance:
+</SPAN>ConfigValues cfg = <SPAN style="COLOR: #0000ff">new</SPAN> ConfigValues();
+
+<SPAN style="COLOR: #008000">// Setting few random configuration values:
+</SPAN>cfg.UseSigningByte = <SPAN style="COLOR: #0000ff">true</SPAN>;
+cfg.Compression.Disable = <SPAN style="COLOR: #0000ff">false</SPAN>;
+
+<SPAN style="COLOR: #008000">// Creating SerializationCentral instance based on the configuration:
+</SPAN>SerializationCentral central = <SPAN style="COLOR: #0000ff">new</SPAN> SerializationCentral(cfg);
+
+<SPAN style="COLOR: #008000">// ...
+// Now we can use SerializationCentral for all (de)serializations
+// ...</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>The main thing to notice here is the fact that <A href="FD.Serialization~FD.Serialization.Config.ConfigValues.html" data-auto-update-caption="true">ConfigValues Class</A>' structure mirrors configuration file structure, where the class itself represents <SPAN class="InlineCode dxMisspelled">fd_serialization</SPAN> configuration element, and its properties correspond to <SPAN class="InlineCode dxMisspelled">fd_serialization</SPAN> sub-elements (i.e. <A href="FD.Serialization~FD.Serialization.Config.ConfigValues~DisableAdvanced.html" data-auto-update-caption="true">DisableAdvanced Property</A> corresponds to <SPAN class=InlineCode>fd_serialization:disableAdvanced</SPAN> sub-element, etc.).</P>
+<H2>Combined Configuration</H2>
+<P>Combined configuration can be done in the following way:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Combined Configuration</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// Creating ConfigValues instance based on the configuration file:
+</SPAN>ConfigValues cfg = <SPAN style="COLOR: #0000ff">new</SPAN> ConfigValues(<SPAN style="COLOR: #800000">"config_file_path.json"</SPAN>);
+
+<SPAN style="COLOR: #008000">// Changing few random configuration values:
+</SPAN>cfg.UseSigningByte = <SPAN style="COLOR: #0000ff">true</SPAN>;
+cfg.Compression.Disable = <SPAN style="COLOR: #0000ff">false</SPAN>;
+
+<SPAN style="COLOR: #008000">// Creating SerializationCentral instance based on the configuration:
+</SPAN>SerializationCentral central = <SPAN style="COLOR: #0000ff">new</SPAN> SerializationCentral(cfg);
+
+<SPAN style="COLOR: #008000">// ...
+// Now we can use SerializationCentral for all (de)serializations
+// ...</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<H2>Attribute Configuration</H2>
+<P>Another option is to configure serialization of particular type by annotating this type with an attribute (<A href="FD.Serialization~FD.Serialization.SerializationOptionsAttribute.html" data-auto-update-caption="true">SerializationOptionsAttribute Class</A> or <A href="FD.Serialization~FD.Serialization.Compression.CompressionOptionsAttribute.html" data-auto-update-caption="true">CompressionOptionsAttribute Class</A>), as in the following example:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Attribute Configuration</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE>[SerializationOptions(IncludeSerializerId = <SPAN style="COLOR: #0000ff">true</SPAN>)]
+[CompressionOptions(UseCompression = <SPAN style="COLOR: #0000ff">false</SPAN>)]
+<SPAN style="COLOR: #0000ff">public</SPAN> <SPAN style="COLOR: #0000ff">interface</SPAN> IMyObject {
+<SPAN style="COLOR: #008000">// ...
+</SPAN>}</PRE></TD></TR></TBODY></TABLE></DIV>
+<DIV class="i-box i-box-caution">Attribute configuration, if specified, will override any other configuration except for call-level configuration (explained below). </DIV> 
+<H2>Call-Level Configuration</H2>
+<P>Configuration mechanisms described so far are defined project-level. Besides that we can also specify some configuration options on per-execution basis (per method call). Here's one example:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Call-Level Configuration Options</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// SerializationCentral instance:
+</SPAN>SerializationCentral central = <SPAN style="COLOR: #0000ff">new</SPAN> SerializationCentral(<SPAN style="COLOR: #800000">"config_file_path.json"</SPAN>);
+
+<SPAN style="COLOR: #008000">// Instance to serialize:
+</SPAN>IMyObject instance = <SPAN style="COLOR: #0000ff">new</SPAN> MyObject();
+
+<SPAN style="COLOR: #008000">// Serializing:
+</SPAN><SPAN style="COLOR: #0000ff">byte</SPAN>[] serialized;
+central.Serialize(instance, <SPAN style="COLOR: #0000ff">out</SPAN> serialized, WellKnownSerializers.Protobuf,
+    serializingOptions: <SPAN style="COLOR: #0000ff">new</SPAN> SerializationOptions { IncludeSerializerId = <SPAN style="COLOR: #0000ff">true</SPAN> },
+    compressionOptions: <SPAN style="COLOR: #0000ff">new</SPAN> CompressionOptions { UseCompression = <SPAN style="COLOR: #0000ff">false</SPAN> });</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>It's worthwhile noting that not all options are demonstrated in the previous example. Almost all options can be defined in this way, at the method call level.</P>
+<DIV class="i-box i-box-caution">Call-level configuration, if specified, will override any other configuration explained so far. </DIV>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+
+
+    </div>
+    
+
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

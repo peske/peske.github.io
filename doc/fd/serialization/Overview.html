@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    
+
+    
+
+    <title>Overview</title>
+    <meta name="Title" content="Overview"/>    
+    
+
+    <script src="template/packages/jquery/script/chm.mshc/jquery-1.7.2.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="FD.Serialization Library
+The latest CHM version of this documentation is available here. 
+FD.Serialization Assembly, together with its satellite assemblies, is originally created to provide some kind of inversion of control mechanism when it comes " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/chm.mshc/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/chm.mshc/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="6039b7fd-e9a1-4b33-ad56-78cb3c812440"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/customstyles.css"></link>
+    
+
+    
+
+    
+
+    <!-- Google Analytics -->
+<script>
+if (location.protocol == "http:" || location.protocol == "https:") {
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78446365-3', 'auto');
+ga('send', 'pageview');
+}
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        
+            <div class="i-project-title"></div>
+        <div class="i-page-title"><div class="i-page-title-text">Overview</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <H1>FD.Serialization Library</H1>
+<DIV class="i-box i-box-note">The latest CHM version of this documentation&nbsp;is available <A href="https://www.itenlight.com/doc/fd/serialization/FD.Serialization.chm">here</A>. </DIV>
+<P><A href="FD.Serialization.html" data-auto-update-caption="true">FD.Serialization Assembly</A>, together with its satellite assemblies, is originally created to provide some kind of <EM>inversion of control</EM> mechanism when it comes to serialization and serialization products available. We didn't wanted our code to be tightly dependant on <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> for example; instead we wanted to be able to change actual serialization mechanism at any point in time <STRONG>without having to change single line of code</STRONG> in our software that uses serialization. Basically, the original idea was to create a library that will define interfaces for usual serialization operations, and then let the library to choose actual serialization mechanism that will be used. But as soon as we've started with development it turned out that the library will introduce few more features, and solve few more problems. Finally we've ended up with library that is true life-savior in developing complex, heavily loaded, still performant distributed software systems. FD.Serialization library has became our flagship product among libraries from our development framework.</P>
+<H2>Core Library and Satellite Libraries</H2>
+<P>Before explaining the components included I need to emphasize one thing: FD.Serialization library and its satellite assemblies do not introduce any new serialization mechanism. Instead they implement existing serialization products internally (for example, <A href="FD.Serialization.Protobuf.html" data-auto-update-caption="true">FD.Serialization.Protobuf Assembly</A> is based on existing <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> library). Let's see how everything is organized:</P>
+<UL>
+<LI><A href="FD.Serialization.html" data-auto-update-caption="true">FD.Serialization Assembly</A> is core library that provides a framework to use for developing satellite assemblies. Also it implements some features that can be used no matter which satellite library is used (i.e. compression,&nbsp;etc.) 
+<LI><EM>Serializer assemblies</EM> (or <EM>satellite assemblies</EM>) are assemblies which are implementing particular existing serialization product. For example, <A href="FD.Serialization.Protobuf.html" data-auto-update-caption="true">FD.Serialization.Protobuf Assembly</A> is a serializer assembly that implements <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> library. Serializer assemblies basically represent a bridge between particular existing serialization library (<A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protobuf</A> in our example), and core FD.Serialization library. </LI></UL>
+<H2>Audience</H2>
+<P>Before jumping into details about the library I need to define three possible groups among readers of this manual:</P>
+<UL>
+<LI><EM><STRONG>IT Enlight employees</STRONG></EM> are those among you who are lucky to work for IT Enlight, and who will continue with developing the base library and its satellites which are under our control; 
+<LI><EM><STRONG>Serializer library developers</STRONG></EM> are those of you who want to develop another serializer assembly (probably one that implements some other serialization mechanism); 
+<LI><EM><STRONG>End users</STRONG></EM> are those who'll simply use FD.Serialization library and existing satellite assemblies in their projects. </LI></UL>
+<P>Obviously in all three groups we are talking about developers. It is important to remember these terms because they'll be used throughout this manual. For example if you want to learn how to use this library, and not to develop new serializer assemblies, and you encounter a section throughout this documentation that is marked as content <EM>for serializer library developers</EM> - you can skip this section entirely, still being sure that you haven't skipped something that you should know.</P>
+<H2>Content Structure</H2>
+<P>There is a lot to say about the library and its features, and I'll start with the most important thing:</P>
+<P style="COLOR: rgb(0,88,40)" align=center><STRONG style="FONT-SIZE: xx-large; FONT-WEIGHT: bold; COLOR: green">DON'T PANIC</STRONG></P>
+<P>Everything will be represented in comprehensive way, and you can master everything (in theory) in one day. Practice will do the rest.</P>
+<P>There are quite a few questions we need to cover (answer) here:</P>
+<UL>
+<LI>Why to use the library (what valuable it has to offer)? 
+<LI>When to use the library? 
+<LI>How to implement it? 
+<LI>How to configure it? 
+<LI>How it affects performances? </LI></UL>
+<P>For this manual I've decided not to go with explaining one question completely before proceeding to another. Instead I've decided to go in <EM>feature-by-feature</EM> manner. It means that for every major feature I will:</P>
+<UL>
+<LI>Describe the feature (what it is useful for); 
+<LI>Provide some comparative view how things would be done without the feature, and with the feature, so that you'll immediately know why it is nice to have and use the feature (or to skip the rest if you are not interested in); 
+<LI>Describe how the feature affects performance and provide benchmark tests where appropriate; 
+<LI>Enumerate and explain configuration options related to this particular feature. It means that there won't be a dedicated section that explains configuring FD.Serialization library; instead every section that covers some of the features will have part that deals with configuring this feature. </LI></UL>
+<P>While explaining features of the library I'll often compare it with .NET embedded serialization mechanism (i.e. <A href="https://msdn.microsoft.com/en-us/library/system.runtime.serialization.formatters.binary.binaryformatter(v=vs.110).aspx" target=_blank>BinaryFormatter</A>), and <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A>. I've intentionally chosen these for the following reasons:</P>
+<UL>
+<LI>.NET embedded mechanism is by far the most convenient one to implement and use. Basically the only thing that needs to be done is to mark a class with <A href="https://msdn.microsoft.com/en-us/library/system.serializableattribute.aspx" target=_blank>Serializable</A> attribute, and .NET framework will do everything internally and completely transparently. But on the other side this mechanism has few <STRONG>huge drawbacks</STRONG>, the most important being: 
+<UL>
+<LI>Performances - it's way too slow and too CPU intensive for any merely demanding project - it's often hundreds or even thousand times slower than <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A>; 
+<LI>Message size - byte array (or stream) gotten is too big - it's often dozen times larger than the result of <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> serialization; 
+<LI>Obsolete - Microsoft has discontinued binary serialization in .NET Core, and they are suggesting using other serialization mechanisms including <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> (as you can read in "Binary Serialization" section in <A href="https://blogs.msdn.microsoft.com/dotnet/2016/02/10/porting-to-net-core/" target=_blank>this blog</A>). </LI></UL>
+<LI><A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> is probably the most popular serialization mechanism these days, and very powerful when it comes to performances, message size, etc. But it's not so simple to implement it, and even worse - it's not so simple to use it (as will be shown in this manual). </LI></UL>
+<P>So, let's get started!</P>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+
+
+    </div>
+    
+
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    
+
+    
+
+    <title>Anonymous Deserialization</title>
+    <meta name="Title" content="Anonymous Deserialization"/>    
+    
+
+    <script src="template/packages/jquery/script/chm.mshc/jquery-1.7.2.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Another very useful feature of FD.Serialization library is that it allows anonymous deserialization. It means that we are able to deserialize an instance from byte array or stream even if don't know its type. For comparison it is not possible in Goog" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/chm.mshc/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/chm.mshc/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="3300ee29-030b-4e4c-843a-41f4e8884856"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/customstyles.css"></link>
+    
+
+    
+
+    
+
+    <!-- Google Analytics -->
+<script>
+if (location.protocol == "http:" || location.protocol == "https:") {
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78446365-3', 'auto');
+ga('send', 'pageview');
+}
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        
+            <div class="i-project-title"></div>
+        <div class="i-page-title"><div class="i-page-title-text">Anonymous Deserialization</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <P>Another very useful feature of FD.Serialization library is that it allows anonymous deserialization. It means that we are able to deserialize an instance from byte array or stream even if don't know its type. For comparison it is not possible in <A href="https://github.com/google/protobuf" target=_blank>Google Protocol Buffers</A>. Here's an example how deserialization is done in <A href="https://github.com/google/protobuf" target=_blank>Google Protocol Buffers</A>:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Protobuf Example</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// Serialized instance:
+</SPAN><SPAN style="COLOR: #0000ff">byte</SPAN>[] serialized = ...
+
+<SPAN style="COLOR: #008000">// Deserializing:
+</SPAN>ProtobufMyObject obj = ProtobufMyObject.Parser.ParseFrom(serialized);</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>In this case we are using static property <SPAN class=InlineCode>Parser</SPAN> of <SPAN class=InlineCode>MyObjectProtobuf</SPAN> class to perform deserialization, meaning that we have to know that array of bytes actually contains <SPAN class=InlineCode>MyObjectProtobuf</SPAN> type serialized. This can be serious limitation if we are, for example, accepting a lot of messages of different types; we would have to implement additional mechanism for recognizing different message types in order to deserialize them.</P>
+<P>In contrary, FD.Serialization library allows anonymous deserialization (if serialization at the other side is also performed by FD.Serialization library) in the following way:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>FD.Serialization Example</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// SerializationCentral instance:
+</SPAN>SerializationCentral central = <SPAN style="COLOR: #0000ff">new</SPAN> SerializationCentral(<SPAN style="COLOR: #800000">"config_file_path.json"</SPAN>);
+
+<SPAN style="COLOR: #008000">// Serialized instance:
+</SPAN><SPAN style="COLOR: #0000ff">byte</SPAN>[] serialized = ...
+
+<SPAN style="COLOR: #008000">// Deserializing:
+</SPAN><SPAN style="COLOR: #0000ff">object</SPAN> obj = central.Deserialize(serialized);</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>After that we can simply determine the type of <SPAN class=InlineCode>obj</SPAN> instance gotten.</P>
+<P>Just to mention that BinaryFormatter serialization also provides comfort of anonymous deserialization.</P>
+<H2>Mechanism and Configuration</H2>
+<P>In this case it is important to understand basics about underlying implementation of this feature, in order to use it (configure it) correctly. There's no too much magic about this - FD.Serialization library simply prefixes serialized stream or byte array with several metadata bytes, and type identifier among them. <A href="FD.Serialization~FD.Serialization.TypeBookBase.html" data-auto-update-caption="true">TypeBookBase Class</A> explained in <A href="Example.html" data-auto-update-caption="true">Example</A> section serves this very purpose - it defines type identifiers for every type that will be (de)serialized.</P>
+<P>There are two configuration options related to this feature:</P>
+<UL>
+<LI><SPAN class=InlineCode>fd_serialization:typeIdLength</SPAN> value; 
+<LI><SPAN class=InlineCode>includeTypeId</SPAN> value from <SPAN class=InlineCode>fd_serialization:serialization:options</SPAN> sub-section. </LI></UL>
+<P>The first determines how many bytes will be used for type identifiers (byte = 1, short = 2, int = 4, long = 8, Guid = 16). The safest is Guid, of course. But it will add additional 16 bytes to every message, and in systems where message size is important it is simply too much. In vast majority of cases one byte will be enough (if you don't have more than 256 different types that will be (de)serialized).</P>
+<P>The second option defines if type identifiers will be inserted to metadata at all. For example if your underlying serialization mechanism is BinaryFormatter which supports anonymous deserialization out-of-the-box - there's no need to include another type identifier, so you'll probably want to set <SPAN class=InlineCode>includeTypeId</SPAN> value to <SPAN class=InlineCode>false</SPAN> in this case. Convenient thing about this value is that it can be defined at serializer level (check <A href="ImplementationAgnostic.html" data-auto-update-caption="true">Implementation Agnostic</A> section to see how it may be configured per serializer level).</P>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+
+
+    </div>
+    
+
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

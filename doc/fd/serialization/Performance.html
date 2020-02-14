@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    
+
+    
+
+    <title>Performance</title>
+    <meta name="Title" content="Performance"/>    
+    
+
+    <script src="template/packages/jquery/script/chm.mshc/jquery-1.7.2.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="There's no doubt that performances are one of the most important aspects of any serialization library, and we've gave our best to ensure that FD.Serialization library does not degrade performances of an underlying serialization mechanisms too much. O" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/chm.mshc/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/chm.mshc/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="dbebb3ae-7b1e-460e-b8d7-8c933d168e4c"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/customstyles.css"></link>
+    
+
+    
+
+    
+
+    <!-- Google Analytics -->
+<script>
+if (location.protocol == "http:" || location.protocol == "https:") {
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78446365-3', 'auto');
+ga('send', 'pageview');
+}
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        
+            <div class="i-project-title"></div>
+        <div class="i-page-title"><div class="i-page-title-text">Performance</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <P>There's no doubt that performances are one of the most important aspects of any serialization library, and we've gave our best to ensure that FD.Serialization library does not degrade performances of an underlying serialization mechanisms too much. Of course, due to the fact that FD.Serialization library builds upon existing serialization mechanisms and adds some useful features, it is very likely that it will degrade performances to some degree. But we've tried to keep this degradation at minimum. Nevertheless, in some cases it may even happen that FD.Serialization performs better than the underlying mechanism itself. How it can be possible? Well, it'll be explained below.</P>
+<P>To provide some insight we've conducted several tests. For testing we've used rather complex message type - with quite a few properties, some of which are complex, some are lists, some dictionaries, etc. The tests are performed on average laptop. Here are the results:</P>
+<TABLE>
+<THEAD>
+<TR>
+<TH>Serialization Method</TH>
+<TH>Time in Milliseconds*</TH>
+<TH>Message Size (Bytes)</TH></TR></THEAD>
+<TBODY>
+<TR>
+<TD>BinaryFormatter directly (without FD.Serialization library)</TD>
+<TD>10,103.3933</TD>
+<TD>17,379</TD></TR>
+<TR>
+<TD>Protobuf directly (without FD.Serialization library)</TD>
+<TD>768.7419</TD>
+<TD>4,064</TD></TR>
+<TR>
+<TD>FD.Serialization.Protobuf</TD>
+<TD>1,225.0629</TD>
+<TD>4,082</TD></TR>
+<TR>
+<TD>FD.Serialization.Protobuf + GZip Optimal</TD>
+<TD>3,108.2442</TD>
+<TD>1,831</TD></TR>
+<TR>
+<TD>FD.Serialization.Protobuf + Deflate Optimal</TD>
+<TD>2,589.2083</TD>
+<TD>1,810</TD></TR>
+<TR>
+<TD>FD.Serialization.Protobuf + GZip Fast</TD>
+<TD>2,888.182</TD>
+<TD>1,855</TD></TR>
+<TR>
+<TD>FD.Serialization.Protobuf + Deflate Fast</TD>
+<TD>2,584.8453</TD>
+<TD>1,836</TD></TR></TBODY></TABLE>
+<P>(*) Time for 10,000 single-threaded&nbsp;serialization/deserialization cycles in milliseconds.</P>
+<P>Let me provide few observations:</P>
+<UL>
+<LI>BinaryFormatter method is obviously the worst one in performances. It takes more than 10 seconds for 10,000&nbsp;serializations and deserializations, and resulting message size is more than 17KB; 
+<LI>Bare protobuf obviously offers the best performances - more than dozen times faster than BinaryFormatter, with more than&nbsp;four times smaller message (serialized data); 
+<LI>FD.Serialization.Protobuf is slower than bare protobuf for about 60% (at least for this message type), and has bit larger message size (due to prepended&nbsp;metadata). It is true that being slower for 60% is noticeable, but having in mind all great features FD.Serialization offers - we consider this to be fair tradeoff; 
+<LI>When compression is turned on (de)serialization time rises significantly, but message size drops significantly, so in some scenarios this can be justified.</LI></UL>
+<P>Finally, let explain my statement from above that FD.Serialization sometimes can have even better performances than the underlying serializer itself. Depending what is the bottleneck in your particular environment it may happen that compression can improve the overall system performance. If network is the bottleneck reducing the message size for about 60% (thus reducing bandwidth and the&nbsp;overall traffic for 60%) can make system as a whole perform better.</P>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+
+
+    </div>
+    
+
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    
+
+    
+
+    <title>Implementation Agnostic</title>
+    <meta name="Title" content="Implementation Agnostic"/>    
+    
+
+    <script src="template/packages/jquery/script/chm.mshc/jquery-1.7.2.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The first very important feature (and actually the feature that was the original main reason for developing FD.Serialization library) is the fact that it is implementation-agnostic. It means that it's implemented in the same way, no matter which seri" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/chm.mshc/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/chm.mshc/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="866fa810-5c7d-4280-bf2f-8b05ff8dec8e"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="stylesheets/customstyles.css"></link>
+    
+
+    
+
+    
+
+    <!-- Google Analytics -->
+<script>
+if (location.protocol == "http:" || location.protocol == "https:") {
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78446365-3', 'auto');
+ga('send', 'pageview');
+}
+</script>
+<!-- End Google Analytics -->
+
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        
+            <div class="i-project-title"></div>
+        <div class="i-page-title"><div class="i-page-title-text">Implementation Agnostic</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <P>The first very important feature (and actually the feature that was the original main reason for developing FD.Serialization library) is the fact that it is <EM>implementation-agnostic</EM>. It means that it's implemented in the same way, no matter which serialization mechanism is used. Calling code remains the same, without need for recompiling if we decide to change underlying serialization mechanism. Changing underlying serialization mechanism is as simple as changing one line in configuration file and restarting the application.</P>
+<P>Here I'll provide a simple example how (de)serialization is done in a calling code:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Serialization and Deserialization with FD.Serialization Library</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// SerializationCentral instance that's used across the project:
+</SPAN>SerializationCentral central = <SPAN style="COLOR: #0000ff">new</SPAN> SerializationCentral(<SPAN style="COLOR: #800000">"configuration_file_path.json"</SPAN>);
+
+<SPAN style="COLOR: #008000">// Serialization:
+</SPAN>IMyObject message = <SPAN style="COLOR: #0000ff">new</SPAN> MyObject();
+<SPAN style="COLOR: #0000ff">byte</SPAN>[] serialized;
+central.Serialize(message, <SPAN style="COLOR: #0000ff">out</SPAN> serialized);
+
+<SPAN style="COLOR: #008000">// Deserialization if resulting type is known:
+</SPAN>message = central.Deserialize&lt;IMyObject&gt;(serialized);
+
+<SPAN style="COLOR: #008000">// Deserialization if resulting type is unknown:
+</SPAN><SPAN style="COLOR: #0000ff">object</SPAN> received = central.Deserialize(serialized);</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>As already mentioned this code won't change if we change underlying serialization mechanism; the only thing that will be changed is <SPAN class=InlineCode>configuration_file_path.json</SPAN> configuration file.</P>
+<H2>Multiple Different Serialization Mechanisms at the Same Time</H2>
+<P>Even more, FD.Serialization library is fully capable of dealing with multiple different underlying serialization mechanisms at the same time, still keeping calling code fairly simple. When it comes to deserialization - the calling code won't change at all. FD.Serialization library will infer serialization method used from the serialized message itself. It basically means that <SPAN class=InlineCode>serialized</SPAN> variable from the previous code already contains info about serialization method used, so FD.Serialization library will deserialize it appropriately without requiring any change in deserialization code from the example above.</P>
+<P>When it comes to serialization - there are few things we need to do. The key thing we need to understand is which underlying serialization mechanism is actually used when we call <A href="FD.Serialization~FD.Serialization.SerializationCentral~Serialize.html" data-auto-update-caption="true">Serialize Method</A> as in the example above. The answer is that it is configured in configuration file. In configuration file we have an option to define the default serialization mechanism that will be used, but also we can define alternative mechanism for particular types. For example, we can define <A href="https://github.com/google/protobuf" target=_blank>Google Protocol Buffers</A> as the default serialization mechanism, but also say that instances of type <SPAN class=InlineCode>IMyObject</SPAN> should be serialized by using .NET embedded <SPAN class=InlineCode>BinaryFormatter</SPAN> mechanism. Finally, we also have an option to specify the serialization mechanism that should be used in code, as in the following example:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Specifying Serialization Mechanism</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE>central.Serialize(message, <SPAN style="COLOR: #0000ff">out</SPAN> serialized, WellKnownSerializers.BinaryFormatter);</PRE></TD></TR></TBODY></TABLE></DIV> 
+<H3>Bridging</H3>
+<P>The fact that FD.Serialization library is capable of dealing with multiple different underlying serialization mechanisms at the same time allows us to use it for <EM>bridging</EM> between parts of network (parts of distributed software system) that are using different serialization mechanisms. For example, let's assume that you already have some parts of your distributed software systems developed based on <SPAN class=InlineCode>BinaryFormatter</SPAN> serialization, and you have some newer parts developed based on <A href="https://github.com/google/protobuf" target=_blank>Google Protocol Buffers</A>. In such case you can simply create a bridge between these parts in the following way:</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Bridging Example</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE><SPAN style="COLOR: #008000">// Receiving a message (byte[] serialized) from BinaryFormatter part of the network:
+</SPAN><SPAN style="COLOR: #0000ff">object</SPAN> received = central.Deserialize(serialized, WellKnownSerializers.BinaryFormatter);
+
+<SPAN style="COLOR: #008000">// Serializing message for protobuf part of the network:
+</SPAN><SPAN style="COLOR: #0000ff">byte</SPAN>[] serializedProtobuf;
+central.Serialize(received, <SPAN style="COLOR: #0000ff">out</SPAN> serializedProtobuf, WellKnownSerializers.Protobuf);</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>There are several things to note here:</P>
+<UL>
+<LI>This time I've specified serializer (<SPAN class=InlineCode>WellKnownSerializers.BinaryFormatter</SPAN>) in <A href="FD.Serialization~FD.Serialization.SerializationCentral~Deserialize.html" data-auto-update-caption="true">Deserialize Method</A>, although I've told above that the method is capable of determining the serializer used based on byte array itself. It's true, but only if serialization is originally done by using FD.Serialization library; in this case the library will add necessary info to the byte array. But if the serialization is done by directly using <SPAN class=InlineCode>BinaryFormatter</SPAN> - we have to specify serializer used as I've did in this last example. 
+<LI>In reality bridging would be somewhat more complicated to implement if not exact same types (interfaces) are used at both sides of the network, but you've got an idea how it can be done. </LI></UL>
+<H2>Configuration</H2>
+<P>Finally we need to understand configuration options related to this feature. The key configuration related to this section that we should do is to configure which underlying serializing mechanisms should be used. Let's assume that we want to define <A href="https://github.com/google/protobuf" target=_blank>Google Protocol Buffers</A> as default serialization mechanism, and <SPAN class=InlineCode>BinaryFormatter</SPAN> for instances of type <SPAN class=InlineCode>MyAssembly.IMyObject</SPAN>. This can be done in the configuration file as in example below (the example actually contains only <SPAN class=InlineCode>fd_serialization:serialization</SPAN> section):</P>
+<DIV class=i-filtered-content-JSON data-title="JSON" data-itemid="JSON">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Configuring Serializers in the Configuration File</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE>{
+     <SPAN style="COLOR: #800000">"fd_serialization"</SPAN>: {
+         <SPAN style="COLOR: #800000">"serialization"</SPAN>: {
+             <SPAN style="COLOR: #800000">"disableAdvanced"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+             <SPAN style="COLOR: #800000">"serializerAssemblies"</SPAN>: [
+                 <SPAN style="COLOR: #800000">"FD.Serialization.BinaryFormatter"</SPAN>,
+                 <SPAN style="COLOR: #800000">"FD.Serialization.Protobuf"</SPAN>
+             ],
+             <SPAN style="COLOR: #800000">"messageAssemblies"</SPAN>: [
+                 <SPAN style="COLOR: #800000">"MyDataContracts"</SPAN>,
+                 <SPAN style="COLOR: #800000">"MyDataContractsProtobuf"</SPAN>
+             ],
+             <SPAN style="COLOR: #800000">"serializers"</SPAN>: [
+                 {
+                     <SPAN style="COLOR: #800000">"serializerId"</SPAN>: <SPAN style="COLOR: #800000">"0"</SPAN>,
+                     <SPAN style="COLOR: #800000">"type"</SPAN>: <SPAN style="COLOR: #800000">"MyAssembly.IMyObject, MyAssembly"</SPAN>,
+                 },
+                 {
+                     <SPAN style="COLOR: #800000">"serializerId"</SPAN>: <SPAN style="COLOR: #800000">"1"</SPAN>
+                 }
+             ],
+             <SPAN style="COLOR: #800000">"options"</SPAN>: [
+                 {
+                     <SPAN style="COLOR: #800000">"includeSerializerId"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+                     <SPAN style="COLOR: #800000">"includeDelimiters"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+                     <SPAN style="COLOR: #800000">"includeTypeId"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>
+                 }
+             ]
+         }
+     }
+ }</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>Let's explain particular options:</P>
+<UL>
+<LI><SPAN class=InlineCode>disableAdvanced</SPAN> - represents <EM>a master switch</EM> for all advanced serialization options (i.e. options introduced by FD.Serialization library). If this value is set to false the result of serialization won't contain serializer ID, delimiters and type ID, no matter other configuration values specified in the rest of configuration file, or in code. 
+<LI><SPAN class=InlineCode>serializerAssemblies</SPAN> - simply enumerates serializer assemblies that will be used for (de)serialization. </LI></UL>
+<H3>serializers Section</H3>
+<P>This section is used for setting configuration from our example. You can read it in the following way:</P>
+<UL>
+<LI>For type <SPAN class=InlineCode>MyAssembly.IMyObject</SPAN> use serializer with ID <SPAN class=InlineCode>0</SPAN> (<SPAN class=InlineCode>FD.Serialization.BinaryFormatter</SPAN>); 
+<LI>For all other types use serializer with ID <SPAN class=InlineCode>1</SPAN> (<SPAN class=InlineCode>FD.Serialization.Protobuf</SPAN>). </LI></UL>
+<P><SPAN class=InlineCode>serializers</SPAN> section is constructed in such way that <SPAN class=InlineCode>type</SPAN> value represents a key (the type the serializer should be used for), and <SPAN class=InlineCode>serializerId</SPAN> value represents the actual serializer to use. Of course, the same <SPAN class=InlineCode>type</SPAN> value (since being a key) should not appear more than once. If <SPAN class=InlineCode>type</SPAN> value is not specified it means "all other types".</P>
+<P>The similar key/values principle is used in many other sections, but in all other cases the key is actually combination of <SPAN class=InlineCode>type</SPAN> and <SPAN class=InlineCode>serializerId</SPAN> values. For example this is the case in <SPAN class=InlineCode>options</SPAN> section from the previous example. One may say "wait, there are no <SPAN class=InlineCode>type</SPAN> and <SPAN class=InlineCode>serializerId</SPAN> values!" Well yes, but it is only due to the fact that the previous example contains only default options, for any type and any serializer (so <SPAN class=InlineCode>type</SPAN> and <SPAN class=InlineCode>serializerId</SPAN> values are not specified).</P>
+<H3>options Section</H3>
+<P>In this section we can specify particular options (<SPAN class=InlineCode>includeSerializerId</SPAN>, <SPAN class=InlineCode>includeDelimiters</SPAN> and <SPAN class=InlineCode>includeTypeId</SPAN>) that will be used while serializing instances of the specified type with specified serializer. Let's first explain meaning of mentioned options:</P>
+<UL>
+<LI><SPAN class=InlineCode>includeSerializerId</SPAN> - whether serializer ID will be included in message metadata or not. If we are using the same underlying serialization mechanism throughout software system, we can set this value to <SPAN class=InlineCode>false</SPAN> since we'll always know before deserialization which serializer is used for serializing message. But if we have different serializers used, and we cannot be sure which of these is used for serializing message - we have to set this value to <SPAN class=InlineCode>true</SPAN>, thus allowing FD.Serialization library to embed this info into metadata so that it can <EM>automatically</EM> determine which serializer is used for particular message. 
+<LI><SPAN class=InlineCode>includeDelimiters</SPAN> - whether to include delimiters or not. Including delimiters actually means writing message length into metadata, so that before deserialization FD.Serialization library can <EM>know</EM> where this particular message ends. Delimiters are important if we are serializing multiple messages into single stream (network stream, or file stream). It is worthwhile noting that some serializers (i.e. BinaryFormatter) already embed this info into their serialization result, so in this case we can set this value to <SPAN class=InlineCode>false</SPAN>. 
+<LI><SPAN class=InlineCode>includeTypeId</SPAN> - whether to include type ID or not. This option is explained in <A href="AnonymousDeserialization.html" data-auto-update-caption="true">Anonymous Deserialization</A> section. </LI></UL>
+<P><SPAN class=InlineCode>options</SPAN> section has a bit confusing system of configuration inheritance, so let me try to clarify this in the following example (that contains only <SPAN class=InlineCode>options</SPAN> section):</P>
+<DIV class=i-filtered-content-CS data-title="CS" data-itemid="CS">
+<TABLE class=i-syntax-table>
+<TBODY>
+<TR>
+<TH>Options Inheritance</TH>
+<TH>
+<DIV class=i-copy-code-wrapper><SPAN class=i-copy-code>Copy Code</SPAN> </DIV></TH></TR>
+<TR>
+<TD class=i-code colSpan=2><PRE>{
+      <SPAN style="COLOR: #800000">"fd_serialization"</SPAN>: {
+          <SPAN style="COLOR: #800000">"serialization"</SPAN>: {
+              <SPAN style="COLOR: #800000">"options"</SPAN>: [
+                  {
+                      <SPAN style="COLOR: #800000">"type"</SPAN>: <SPAN style="COLOR: #800000">"MyAssembly.IMyObject, MyAssembly"</SPAN>,
+                      <SPAN style="COLOR: #800000">"serializerId"</SPAN>: <SPAN style="COLOR: #800000">"1"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeSerializerId"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeDelimiters"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+                  },
+                  {
+                      <SPAN style="COLOR: #800000">"type"</SPAN>: <SPAN style="COLOR: #800000">"MyAssembly.IMyObject, MyAssembly"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeSerializerId"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+                  },
+                  {
+                      <SPAN style="COLOR: #800000">"serializerId"</SPAN>: <SPAN style="COLOR: #800000">"0"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeDelimiters"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeTypeId"</SPAN>: <SPAN style="COLOR: #800000">"false"</SPAN>,
+                  },
+                  {
+                      <SPAN style="COLOR: #800000">"includeSerializerId"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeDelimiters"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>,
+                      <SPAN style="COLOR: #800000">"includeTypeId"</SPAN>: <SPAN style="COLOR: #800000">"true"</SPAN>
+                  }
+              ]
+          }
+      }
+  }</PRE></TD></TR></TBODY></TABLE></DIV>
+<P>Let's read the previous example in human language:</P>
+<UL>
+<LI>While serializing instances of type <SPAN class=InlineCode>MyAssembly.IMyObject</SPAN> with serializer with ID <SPAN class=InlineCode>1</SPAN> (<SPAN class=InlineCode>FD.Serialization.Protobuf</SPAN>), don't include serializer ID and don't include delimiters; 
+<LI>While serializing instances of type <SPAN class=InlineCode>MyAssembly.IMyObject</SPAN> with any other serializer, don't include delimiters; 
+<LI>While serializing instances of any type with serializer with ID <SPAN class=InlineCode>0</SPAN> (<SPAN class=InlineCode>FD.Serialization.BinaryFormatter</SPAN>), don't include delimiters nor type ID; 
+<LI>In any other case do include serializer ID, delimiters and type ID. </LI></UL>
+<P>At this point it is not important to know what particular option (<SPAN class=InlineCode>includeSerializerId</SPAN>, <SPAN class=InlineCode>includeDelimiters</SPAN>, or <SPAN class=InlineCode>includeTypeId</SPAN>) means - it'll be explained later. The key thing to understand here is how configuration inheritance works. The important thing to know is that more strict definition will override wider definition. It means that while serializing instance of particular type with particular serializer, FD.Serialization library will check for configuration values in the following order:</P>
+<OL>
+<LI>If configuration value is specified for this exact type/serializer combination - this value will be used; 
+<LI>If configuration value is specified for this type - this value will be used; 
+<LI>If configuration value is specified for this serializer - this value will be used; 
+<LI>If no step above is satisfied the default configuration value will be used. </LI></OL>
+<P>Another important thing to note here is that not keys (<SPAN class=InlineCode>type</SPAN> and <SPAN class=InlineCode>serializerId</SPAN>) nor values (<SPAN class=InlineCode>includeSerializerId</SPAN>, <SPAN class=InlineCode>includeDelimiters</SPAN>, and <SPAN class=InlineCode>includeTypeId</SPAN>) are mandatory. We've already saw that if some of keys is omitted it means <EM>any type</EM> / <EM>any serializer</EM>. On the other side, if some of configuration values is omitted it means <EM>inherit from wider scope</EM>.</P>
+<P>Such flexible configuration system allows configuring any combination you can think of.</P>
+<H2>Configuration in Code</H2>Configuration can also be specified in code, either by using <A href="FD.Serialization~FD.Serialization.SerializationOptionsAttribute.html" data-auto-update-caption="true">SerializationOptionsAttribute Class</A> or at per-call basis, by providing argument of type <A href="FD.Serialization~FD.Serialization.SerializationOptions.html" data-auto-update-caption="true">SerializationOptions Class</A>. Examples for both these in-code usages are provided in <A href="Configuration.html" data-auto-update-caption="true">Configuration</A> section.
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+
+
+    </div>
+    
+
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>
