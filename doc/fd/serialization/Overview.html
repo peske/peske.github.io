@@ -4,7 +4,7 @@
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" value="IE=9" />
 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     
 
@@ -16,11 +16,11 @@
     <script src="template/packages/jquery-ui/script/chm.mshc/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/chm.mshc/jquery-ui-1.8.18.custom.css"></link>
     
-    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
 
     <meta name="Description" content="FD.Serialization Library
-The latest CHM version of this documentation is available here. 
-FD.Serialization Assembly, together with its satellite assemblies, is originally created to provide some kind of inversion of control mechanism when it comes " />
+The web version of this documentation is available online, and the latest compiled (CHM) version can be downloaded here. 
+FD.Serialization Assembly, together with its satellite assemblies, is originally created to provide s" />
     
     <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/chm.mshc/jquery-plugins.css"></link>
     <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
@@ -65,8 +65,8 @@ ga('send', 'pageview');
         
     </div>
     <div id="i-header-content" class="i-header-content">
-        
-            <div class="i-project-title"></div>
+        <img class="logoimage" src="images/fd.jpg" border="0"></img>
+            <div class="i-project-title">FD.Serialization Library by Fat Dragon</div>
         <div class="i-page-title"><div class="i-page-title-text">Overview</div></div>
     </div>
     <div id="i-after-header-content" class="i-after-header-content">
@@ -81,7 +81,7 @@ ga('send', 'pageview');
     
     <div id="i-body-content" class="i-body-content">
         <H1>FD.Serialization Library</H1>
-<DIV class="i-box i-box-note">The latest CHM version of this documentation&nbsp;is available <A href="FD.Serialization.chm">here</A>. </DIV>
+<DIV class="i-box i-box-note">The web version of this documentation is available <A href="https://peske.github.io/doc/fd/serialization">online</A>, and the latest compiled (CHM) version can be downloaded <A href="https://peske.github.io/doc/fd/serialization/FD.Serialization.chm">here</A>. </DIV>
 <P><A href="FD.Serialization.html" data-auto-update-caption="true">FD.Serialization Assembly</A>, together with its satellite assemblies, is originally created to provide some kind of <EM>inversion of control</EM> mechanism when it comes to serialization and serialization products available. We didn't wanted our code to be tightly dependant on <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> for example; instead we wanted to be able to change actual serialization mechanism at any point in time <STRONG>without having to change single line of code</STRONG> in our software that uses serialization. Basically, the original idea was to create a library that will define interfaces for usual serialization operations, and then let the library to choose actual serialization mechanism that will be used. But as soon as we've started with development it turned out that the library will introduce few more features, and solve few more problems. Finally we've ended up with library that is true life-savior in developing complex, heavily loaded, still performant distributed software systems. FD.Serialization library has became our flagship product among libraries from our development framework.</P>
 <H2>Core Library and Satellite Libraries</H2>
 <P>Before explaining the components included I need to emphasize one thing: FD.Serialization library and its satellite assemblies do not introduce any new serialization mechanism. Instead they implement existing serialization products internally (for example, <A href="FD.Serialization.Protobuf.html" data-auto-update-caption="true">FD.Serialization.Protobuf Assembly</A> is based on existing <A href="https://developers.google.com/protocol-buffers/" target=_blank>Google Protocol Buffers</A> library). Let's see how everything is organized:</P>
@@ -133,7 +133,7 @@ ga('send', 'pageview');
     
 
     
-    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
     <script type="text/javascript">
         $(function() {
             var documentInstance = new Innovasys.Content.Document(document.body);
